@@ -1,0 +1,17 @@
+clear all;
+lam=521*10^(-9);
+n=1.5;
+f=0.2;
+I0=1;
+h=1;
+x=linspace(-0.001,0.001,1000);
+y=linspace(-0.001,0.001,1000);
+[x,y]=meshgrid(x,y);
+theta1=atan(sqrt(x.^2+y.^2)/f);
+theta2=asin(sin(theta1)/n);
+deta=2*n*h*cos(theta2)+lam/2;
+phi=2*pi*deta/lam;
+I=4*I0*cos(phi/2).^2;
+pcolor(x,y,I);
+shading flat;
+colormap hsv;
